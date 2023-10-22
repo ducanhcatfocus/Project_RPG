@@ -8,6 +8,9 @@ public class Inventory : MonoBehaviour
 
     public static Inventory Instance  => instance;
     public List<ItemData> startingItem = new List<ItemData>();
+    public ItemData flask;
+
+    public GameObject itemSlotPrefab;
 
 
     public List<InventoryItem> inventoryItems;
@@ -33,7 +36,7 @@ public class Inventory : MonoBehaviour
 
    
     private float lastTimeUseFlask;
-    private float flaskDefautlCd;
+    public float flaskDefautlCd;
 
 
 
@@ -232,7 +235,10 @@ public class Inventory : MonoBehaviour
 
     public void UseFlask()
     {
-        ItemDataEquipment currentFlask = GetEquipment(EquipmentType.Flask);
+        //ItemDataEquipment currentFlask = GetEquipment(EquipmentType.Flask);
+        ItemDataEquipment currentFlask = flask as ItemDataEquipment;
+
+
         if (currentFlask == null) return;
         bool canUseFlask = Time.time > lastTimeUseFlask + flaskDefautlCd;
 
@@ -241,10 +247,6 @@ public class Inventory : MonoBehaviour
             flaskDefautlCd = currentFlask.itemCd;   
             currentFlask.ExeItemEffect(null);
             lastTimeUseFlask = Time.time;
-        }
-        else
-        {
-            Debug.Log("FlaskCd");
         }
     }
 }

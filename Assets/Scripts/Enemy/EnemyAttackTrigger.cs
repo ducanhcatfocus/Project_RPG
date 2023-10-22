@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkeEnemyAttackTrigger : MonoBehaviour
+public class EnemyAttackTrigger : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    private Enemy_Skeleton enemy => GetComponentInParent<Enemy_Skeleton>();
+    private Enemy enemy => GetComponentInParent<Enemy>();
     private void AnimationTrigger()
     {
         enemy.AnimationFinishTrigger();

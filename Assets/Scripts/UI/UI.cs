@@ -8,7 +8,7 @@ public class UI : MonoBehaviour
     [SerializeField] private GameObject skillUI;
     [SerializeField] private GameObject craftUI;
     [SerializeField] private GameObject optionUI;
-    private bool isPaused = false;
+    //private bool isPaused = false;
 
     private void Start()
     {
@@ -19,12 +19,6 @@ public class UI : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.I))
             SwitchWithKey(chracterUI);
-        if (Input.GetKeyDown(KeyCode.C))
-            SwitchWithKey(craftUI);
-        if (Input.GetKeyDown(KeyCode.K))
-            SwitchWithKey(skillUI);
-        if (Input.GetKeyDown(KeyCode.O))
-            SwitchWithKey(optionUI);
     }
 
     public void SwitchUI(GameObject _menu)
@@ -45,7 +39,7 @@ public class UI : MonoBehaviour
     {
         if(_menu != null && _menu.activeSelf)
         {
-            Time.timeScale = 1.0f;
+       
 
             _menu.SetActive(false) ;
 
@@ -53,27 +47,8 @@ public class UI : MonoBehaviour
         }
 
         SwitchUI(_menu);
-        Time.timeScale = 0.0f;
+  
 
-    }
-
-    public void Pause()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            if (isPaused)
-            {
-            
-                Time.timeScale = 1.0f;
-                isPaused = false;
-            }
-            else
-            {
-           
-                Time.timeScale = 0.0f;
-                isPaused = true;
-            }
-        }
     }
 }
  

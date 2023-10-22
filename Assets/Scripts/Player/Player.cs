@@ -99,19 +99,22 @@ public class Player : Entity
         StateMachine.currentState.Update();
         CheckForDashInput();
 
+        UseFlask();
+    }
 
-        if(Input.GetKeyDown(KeyCode.Alpha1))
+    private void UseFlask()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             Inventory.Instance.UseFlask();
         }
     }
 
-
     private void CheckForDashInput()
     {
         if (IsWallDetected()) return;
    
-        if (Input.GetKeyDown(KeyCode.LeftShift) && SkillManager.Instance.dash.CanUseSkill() )
+        if (Input.GetKeyDown(KeyCode.K) && SkillManager.Instance.dash.CanUseSkill() && !GameManager.Instance.IsGameOver())
         {
         
             StateMachine.ChangeState(DashState);

@@ -10,7 +10,7 @@ public class ItemDrop : MonoBehaviour
     [SerializeField] private List<ItemData> dropList = new List<ItemData>();
     public void GenerateDrop()
     {
-        dropAmount = Random.Range(1, 4);
+        dropAmount = Random.Range(1, 5);
         for (int i = 0; i < possibleDrop.Length; i++)
         {
             if(Random.Range(0,100) <= possibleDrop[i].DropChance)

@@ -27,7 +27,12 @@ public class Enemy : Entity
         stateMachine = new EnemyStateMachine();
     }
 
- 
+    protected override void Start()
+    {
+        base.Start();
+        defaultSpeed = moveSpeed;
+
+    }
 
     protected override void Update()
     {
@@ -77,12 +82,24 @@ public class Enemy : Entity
     public virtual void AnimationFinishTrigger() => stateMachine.currentState.AnimationFinishTrigger();
 
 
-    public virtual RaycastHit2D IsPlayerDetected() => Physics2D.Raycast(wallCheck.position, Vector2.right * transform.localScale.x, 10, isPlayer);
+    public virtual RaycastHit2D IsPlayerDetected() => Physics2D.Raycast(wallCheck.position, Vector2.right * transform.localScale.x, 30, isPlayer);
 
     protected override void OnDrawGizmos()
     {
         base.OnDrawGizmos();
         Gizmos.color = Color.yellow;
         Gizmos.DrawLine(transform.position, new Vector3((transform.position.x + attackDistance)*transform.localScale.x, transform.position.y));
+    }
+
+    public override void Die()
+    {
+        base.Die();
+
+        GameManager.Instance.IncreateKill();
+    }
+
+    public override void DestroyEntity(GameObject gameObject)
+    {
+        base.DestroyEntity(gameObject);
     }
 }

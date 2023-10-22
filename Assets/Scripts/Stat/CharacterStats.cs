@@ -73,7 +73,7 @@ public class CharacterStats : MonoBehaviour
         if (ignitedDamageCd < 0 && isIgnited)
         {
             DecreaseHPbyDmg(igniteDamage);
-            if(curentHp < 0)
+            if(curentHp <= 0)
             {
                 Die();
             }
@@ -206,7 +206,7 @@ public class CharacterStats : MonoBehaviour
     public virtual void TakeDamage(int dmg)
     {
         DecreaseHPbyDmg(dmg);
-        if(curentHp <0)
+        if(curentHp <= 0)
         {
             Die();
         }

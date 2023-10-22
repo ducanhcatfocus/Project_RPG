@@ -11,10 +11,10 @@ public class HealEffect : ItemEffect
     public override void ExecuteEffect(Transform enemyPos)
     {
 
-        Debug.Log(healPercentage);
+        //Debug.Log(healPercentage);
         PlayerStats playerStats = PlayerManager.Instance.player.GetComponent<PlayerStats>();
         int healAMount = Mathf.RoundToInt( playerStats.GetMaxHealth() * healPercentage);
-        Debug.Log(healAMount);
+        //Debug.Log(healAMount);
 
         playerStats.IncreaseHP(healAMount);
     }

@@ -17,6 +17,8 @@ public class PlayerPrimaryAttackState : PlayerState
         if (comboCounter >2  || Time.time >= lastTimeAttacked + comboWindow) comboCounter = 0;
 
         player.animator.SetInteger("ComboCounter", comboCounter);
+        AudioManager.Instance.playSound();
+
     }
 
     public override void Exit()

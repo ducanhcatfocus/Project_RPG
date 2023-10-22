@@ -11,6 +11,8 @@ public class PlayerDeathState : PlayerState
     public override void Enter()
     {
         base.Enter();
+        player.SetVelocity(0, 0);
+        DisplayDeathScreen();
     }
 
     public override void Exit()
@@ -23,4 +25,13 @@ public class PlayerDeathState : PlayerState
         base.Update();
         player.SetVelocity(0, 0);
     }
+
+
+    private void DisplayDeathScreen()
+    {
+        GameManager.Instance.GameOver();
+    }
+
+
+
 }

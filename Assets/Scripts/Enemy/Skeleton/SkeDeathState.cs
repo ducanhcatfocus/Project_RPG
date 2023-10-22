@@ -31,5 +31,9 @@ public class SkeDeathState : EnemyState
         {
             enemy.SetVelocity(0, 10);
         }
+        if (stateTimer < -5)
+        {
+            enemy.DestroyEntity(enemy.gameObject);
+        }
     }
 }
